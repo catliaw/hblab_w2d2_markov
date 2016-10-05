@@ -2,6 +2,7 @@ import sys
 from random import choice
 
 input_path = sys.argv[1]
+ngram_num = int(raw_input('Please choose a n-gram number.'))
 
 def open_and_read_file(file_path):
     """Takes file path as string; returns text as string.
@@ -17,7 +18,7 @@ def open_and_read_file(file_path):
     return file_text
 
 
-def make_chains(text_string):
+def make_chains(text_string, num):
     """Takes input text as string; returns _dictionary_ of markov chains.
 
     A chain will be a key that consists of a tuple of (word1, word2)
@@ -29,14 +30,24 @@ def make_chains(text_string):
         >>> make_chains("hi there mary hi there juanita")
         {('hi', 'there'): ['mary', 'juanita'], ('there', 'mary'): ['hi'], ('mary', 'hi': ['there']}
     """
-
+    # instantiating the chains dictionary as an empty dictionary
     chains = {}
-
+ 
+    # splitting all words from file as separate strings in text list
     text = text_string.split()
 
-    for i in range(len(text) - 2):
+    # interating over the text list (on index) for range of the length of the list - num (ngram)
+    for i in range(len(text) - num):
+        # creating tuple word which includes n number of strings
+        # we need another for loop?
+        for tuple_index in range(num):
+            word 
+
+
         word = text[i], text[i + 1]
-        # print word
+        # checking for if key word exists in chain dictionary
+        # if it does not, default add empty dictionary
+        # add to value of key word the next string in text list
         chains[word] = chains.get(word, [])
         chains[word].append(text[i + 2])
         # print chains
